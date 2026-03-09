@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/joke.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- header here -->
+    <%- include("partials/header.ejs") %>
+    
+    <!-- got variables/data from server -->
+    <a class="btn" href="/">try with other filters</a>
+    <div class="joke-container">
+        <h1>Hi <%= name %>, here is your joke</h1>
+        <% if(jokeSetup || jokeDelivery){ %>
+            <h2><%= jokeSetup %></h2>
+            <h2 id="delivery"><%= jokeDelivery %></h2>
+        <% } %>
+    </div>
+
+    <!-- get new joke logic -->
+    <div>
+        <form action="/joke" method="get" class="pass-by-value-container">
+            <input type="hidden" name="name" value="<%= name %>"/>
+
+            <input type="hidden" name="new" value="true">
+
+            <!-- get new joke, passing the same parameters passed by user -->
+            <% if(Array.isArray(category)){ %>
+                <% category.forEach((cat) => { %>
+                    <input type="hidden" name="category" value="<%= cat %>">
+                <% }) %>
+            <% } else { %>
+                    <input type="hidden" name="category" value="<%= category %>">
+            <% } %>
+
+
+            <% if(Array.isArray(blacklist)){ %>
+                <% blacklist.forEach((flag) => { %>
+                    <input type="hidden" name="blacklist" value="<%= flag %>">
+                <% }) %>
+            <% } else { %>
+                    <input type="hidden" name="blacklist" value="<%= blacklist %>">
+            <% } %>
+            
+            <button class="btn" type="submit">Get another joke</button>
+        </form>
+    </div>
+
+    <!-- footer here -->
+    <%- include("partials/footer.ejs") %>
+
+    <!-- script here -->
+    <script>
+        const delivery = document.getElementById("delivery");
+
+        if (delivery && delivery.textContent.trim() !== "") { // if delivery not empty
+            setTimeout(() => {
+                delivery.style.display = "block";
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

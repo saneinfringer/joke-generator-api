@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    padding:20px;
+}
+
+/* Form Card */
+
+form{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    border-radius:18px;
+    padding:40px;
+    width:100%;
+    max-width:700px;
+    color:#fff;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Name input */
+
+form label{
+    font-weight:500;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:10px 14px;
+    margin:10px 0 25px 0;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+/* Options Layout */
+
+.options-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-bottom:25px;
+}
+
+/* Category & blacklist sections */
+
+.categories,
+.blacklist{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:12px;
+}
+
+.categories label,
+.blacklist label{
+    display:block;
+    margin:8px 0;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* Checkbox styling */
+
+input[type="checkbox"]{
+    margin-right:8px;
+    cursor:pointer;
+    accent-color:#ffd369;
+}
+
+/* Submit button */
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:50px;
+    background:#ffffff;
+    color:#333;
+    font-weight:500;
+    font-size:15px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    background:#ffd369;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Responsive */
+
+@media (max-width:700px){
+
+    form{
+        padding:30px 20px;
+    }
+
+    .options-container{
+        grid-template-columns:1fr;
+    }
+}
+
+/* header.ejs file */
+.header-container{
+  top: 10px;
+  left: 10px;
+  height: 6em;
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.left {
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  background-image: url("https://images.unsplash.com/photo-1567446537708-ac4aa75c9c28?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.name {
+  align-self: center;
+}
+
+/* footer.ejs file */
+.footer-container{
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: rgb(207, 201, 201);
+}
+
+/* lol.ejs file */
+a.unnecessary-joke{
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  font-size: xx-large;
+  cursor: pointer;
+  height: 75.9vh;
+  width: 90vw;
+  text-align: center;
+}
+
+a.unnecessary-joke > span {
+  display: block;
+  font-size: small;
+  font-weight: 300;
+  word-wrap: break-word;
+}

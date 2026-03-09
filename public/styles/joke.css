@@ -1,0 +1,155 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:#fff;
+    padding:20px;
+}
+
+/* Joke card */
+.joke-container{
+    height: 50vh;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    border-radius:16px;
+    padding:40px 50px;
+    text-align:center;
+    max-width:600px;
+    width:100%;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    margin-bottom:30px;
+}
+
+.joke-container h1{
+    font-weight:500;
+    margin-bottom:20px;
+}
+
+.joke-container h2{
+    font-weight:400;
+    margin:10px 0;
+}
+
+/* Delivery hidden initially */
+#delivery{
+    display:none;
+    color:#ffd369;
+    font-weight:500;
+}
+
+/* Buttons */
+.btn{
+    text-decoration:none;
+    display:inline-block;
+    padding:12px 26px;
+    border-radius:50px;
+    background:#ffffff;
+    color:#333;
+    font-weight:500;
+    transition:all 0.3s ease;
+    border:none;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    background:#ffd369;
+}
+
+/* Form container */
+.pass-by-value-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Mobile responsive */
+@media (max-width:600px){
+
+    .joke-container{
+        padding:30px 20px;
+    }
+
+    .joke-container h1{
+        font-size:22px;
+    }
+
+    .joke-container h2{
+        font-size:18px;
+    }
+}
+
+/* header.ejs file */
+.header-container{
+  top: 10px;
+  left: 10px;
+  height: 6em;
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.left {
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  background-image: url("https://images.unsplash.com/photo-1567446537708-ac4aa75c9c28?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.name {
+  align-self: center;
+}
+
+/* footer.ejs file */
+.footer-container{
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: rgb(207, 201, 201);
+}
+
+/* lol.ejs file */
+a.unnecessary-joke{
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  font-size: xx-large;
+  cursor: pointer;
+  height: 75.9vh;
+  width: 90vw;
+  text-align: center;
+}
+
+a.unnecessary-joke > span {
+  display: block;
+  font-size: small;
+  font-weight: 300;
+  word-wrap: break-word;
+}

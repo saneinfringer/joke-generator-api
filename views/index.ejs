@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>API</title>
+  </head>
+  <body>
+    <!-- header here -->
+    <%- include("partials/header.ejs") %>
+
+    <form action="/joke" method="post">
+      <label for="name">enter your name</label>
+      <input type="text" name="name" required />
+
+      <div class="options-container">
+        <div class="categories">
+          <label>Categories:</label>
+
+          <label
+            ><input type="checkbox" name="category" value="Any" /> Any</label
+          >
+          <label
+            ><input type="checkbox" name="category" value="Programming" />
+            Programming</label
+          >
+          <label
+            ><input type="checkbox" name="category" value="Misc" /> Misc</label
+          >
+          <label
+            ><input type="checkbox" name="category" value="Dark" /> Dark</label
+          >
+          <label
+            ><input type="checkbox" name="category" value="Pun" /> Pun</label
+          >
+          <label
+            ><input type="checkbox" name="category" value="Spooky" />
+            Spooky</label
+          >
+          <label
+            ><input type="checkbox" name="category" value="Christmas" />
+            Christmas</label
+          >
+        </div>
+
+        <div class="blacklist">
+          <label>Flags/Blacklist:</label>
+
+          <label
+            ><input type="checkbox" name="blacklist" value="nsfw" /> NSFW</label
+          >
+          <label
+            ><input type="checkbox" name="blacklist" value="religious" />
+            Religious</label
+          >
+          <label
+            ><input type="checkbox" name="blacklist" value="political" />
+            Politics</label
+          >
+          <label
+            ><input type="checkbox" name="blacklist" value="racist" />
+            Racist</label
+          >
+          <label
+            ><input type="checkbox" name="blacklist" value="sexist" />
+            Sexist</label
+          >
+          <label
+            ><input type="checkbox" name="blacklist" value="explicit" />
+            Explicit</label
+          >
+        </div>
+      </div>
+
+      <button type="submit">Get joke</button>
+    </form>
+
+    <!-- footer here -->
+    <%- include("partials/footer.ejs") %>
+
+    <!-- script here -->
+    <script>
+      const anyCheckbox = document.querySelector(
+        'input[name="category"][value="Any"]',
+      );
+      const categoryCheckboxes = document.querySelectorAll(
+        'input[name="category"]:not([value="Any"])',
+      );
+      const blacklistCheckboxes = document.querySelectorAll(
+        "input[name=blacklist][type=checkbox]",
+      );
+
+      function updateBlacklistState() {
+        const anyChecked = anyCheckbox.checked;
+        // -- learned new method same as below foreach loop --
+        // const categoryChecked = [...categoryCheckboxes].some(
+        //   (box) => box.checked,
+        // );
+        let categoryChecked = false;
+        categoryCheckboxes.forEach((box) => {
+          if (box.checked === true) {
+            categoryChecked = true;
+          }
+        });
+
+        if (anyChecked || categoryChecked) {
+          blacklistCheckboxes.forEach((box) => (box.disabled = false));
+        } else {
+          blacklistCheckboxes.forEach((box) => {
+            box.disabled = true;
+            box.checked = false;
+          });
+        }
+      }
+
+      // run on page load to disable blacklistState
+      updateBlacklistState();
+
+      /* When ANY is checked */
+      anyCheckbox.addEventListener("change", () => {
+        if (anyCheckbox.checked) {
+          categoryCheckboxes.forEach((cb) => {
+            cb.checked = false;
+          });
+        }
+        updateBlacklistState();
+      });
+
+      /* When other categories are checked */
+      categoryCheckboxes.forEach((cb) => {
+        cb.addEventListener("change", () => {
+          if (cb.checked) {
+            anyCheckbox.checked = false;
+
+            updateBlacklistState();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
