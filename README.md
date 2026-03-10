@@ -4,6 +4,10 @@ A simple **Node.js + Express + EJS** web application that fetches jokes
 from the **JokeAPI** and displays them based on user-selected categories
 and blacklist options.
 
+## 🌐 Live Demo
+
+👉 [View the Live Site](https://joke-generator-api-production.up.railway.app/)
+
 ## 🚀 Features
 
 -   Enter your name and generate jokes
